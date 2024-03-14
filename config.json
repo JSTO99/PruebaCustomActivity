@@ -1,0 +1,68 @@
+{
+    "workflowApiVersion": "1.1",
+    "name": "Genesys",
+    "description": "Custom Activity Description",
+    "metaData": {
+      "icon": "images/icon.png",
+      "category": "message"
+    }, 
+    "type": "REST",
+    "lang": {
+      "en-US": {
+        "name": "Custom Activity Genesys",
+        "description": "Esta custom esta realizada para permitir consumir un endpoint de prueba"
+      }
+    },
+    "arguments": {
+      "execute": {
+        "inArguments": [
+          {
+            "Nombre": "{{Contact.Attribute.DE_PruebaCustom.Nombre}}",
+            "Id": "{{Contact.Attribute.DE_PruebaCustom.Id}}",
+            "Celular":"{{Contact.Attribute.DE_PruebaCustom.Celular}}"
+          }
+        ],
+        "outArguments": [
+          {
+            "returnValue": "default"
+          }
+        ],
+        "url": "https://example.com/execute"
+      }
+    },
+    "configurationArguments": {
+      "publish": {
+        "url": "https://example.com/publish",
+        "securityOptions": {
+          "securityType": "securityContext",
+          "securityContextKey": "EXTERNAL_KEY"
+        }
+      }
+    },
+
+    "schema": {
+      "arguments": {
+        "execute": {
+          "inArguments": [
+            {
+              "Nombre": {
+                "dataType": "String",
+                "isNullable": true,
+                "direction": "in"
+              },
+              "Id": {
+                "dataType": "String",
+                "isNullable": false,
+                "direction": "in"
+              },
+              "Celular": {
+                "dataType": "Phone",
+                "isNullable": true,
+                "direction": "in"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
